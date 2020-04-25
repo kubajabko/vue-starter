@@ -7,8 +7,8 @@
             </h3>
         </div>
         <div v-else>
-            <h1>Witaj w systemie zapisów na zajęcia</h1>
-            <login-form @login="logMeIn($event)"></login-form>
+          <h1>Witaj w systemie zapisów na zajęcia</h1>
+          <login-form @login="logMeIn($event)"></login-form>
         </div>
     </div>
 </template>
