@@ -16,7 +16,8 @@
 </template>
 
 <script>
-export default {
+  import "milligram";
+  export default {
   data() {
     return {
       email: '',
@@ -33,6 +34,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style>
