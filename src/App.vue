@@ -1,12 +1,17 @@
 <template>
   <div>
-    <h1>Twój adres e-mail to {{email}}</h1>
-    <div v-if="email.length < 10">Ale masz krótki adres!</div>
-    <div v-else-if="email.length < 15">Twój adres e-mail jest w sam raz.</div>
-    <div v-else>Twój adres e-mail jest stanowczo za długi.</div>
-    <input type="email"
-           v-model="email">
-    <button @click="alertMyEmail()">Wyświetl mój e-mail w alercie</button>
+    <h1>Witaj w systemie zapisów na zajęcia</h1>
+    <div v-if="authenticatedUsername">
+      <h3>Zalogowany jako: {{authenticatedUsername}}</h3>
+      <a @click="logMeOut()">Wyloguj</a>
+    </div>
+    <div v-else>
+      <p> Zaloguj się e-mailem
+        <input type="email"
+               v-model="email">
+        <button @click="logMeIn()">Wchodzę</button>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -14,12 +19,17 @@
 export default {
   data() {
     return {
-      email: ''
+      email: '',
+      authenticatedUsername: ''
     };
   },
   methods: {
-    alertMyEmail() {
-      alert(this.email);
+    logMeIn() {
+      this.authenticatedUsername = this.email;
+      this.email = '';
+    },
+    logMeOut() {
+      this.authenticatedUsername = '';
     }
   }
 }
