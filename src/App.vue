@@ -2,9 +2,7 @@
     <div>
         <div v-if="authenticatedUsername">
             <h1>System zapisów na zajęcia</h1>
-            <h3>Witaj {{authenticatedUsername}}!
-                <button @click="logMeOut()">Wyloguj</button>
-            </h3>
+            <user-logged :username="authenticatedUsername" @logout="logMeOut($event)"></user-logged>
         </div>
         <div v-else>
           <h1>Witaj w systemie zapisów na zajęcia</h1>
@@ -16,9 +14,11 @@
 <script>
     import "milligram";
     import LoginForm from "./LoginForm";
+    import UserLogged from "./UserLogged";
+    import MeetingPage from "./meetings/MeetingPage";
 
     export default {
-        components: {LoginForm},
+        components: {UserLogged, LoginForm, MeetingPage},
         data() {
             return {
                 authenticatedUsername: ''
