@@ -13,14 +13,14 @@
     export default {
         data() {
             return {
-                newMeeting: {}, contestants: [],
+                newMeeting: {}, participants: [],
             };
         },
         methods: {
             addNewMeeting() {
                 this.$emit('added', this.newMeeting);
                 this.newMeeting = {};
-                this.contestants = [];
+                this.participants = [];
             }
         }
     }

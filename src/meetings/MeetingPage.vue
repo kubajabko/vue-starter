@@ -2,7 +2,7 @@
     <div>
         <h2>Zajęcia</h2>
         <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
-        <meetings-list :meetings="meetings" :username="username" :contestants="contestants"></meetings-list>
+        <meetings-list :meetings="meetings" :username="username"></meetings-list>
     </div>
 </template>
 
@@ -11,7 +11,7 @@
     import MeetingsList from "./MeetingsList";
 
     export default {
-        props: ['username', 'contestants'],
+        props: ['username'],
         components: {NewMeetingForm, MeetingsList},
         data() {
             return {
