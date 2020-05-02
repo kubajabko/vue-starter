@@ -3,6 +3,7 @@
         <div v-if="authenticatedUsername">
             <h1>System zapisów na zajęcia</h1>
             <user-logged :username="authenticatedUsername" @logout="logMeOut($event)"></user-logged>
+            <meeting-page :username="authenticatedUsername" ></meeting-page>
         </div>
         <div v-else>
           <h1>Witaj w systemie zapisów na zajęcia</h1>
