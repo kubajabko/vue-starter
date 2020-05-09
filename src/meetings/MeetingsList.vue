@@ -14,15 +14,15 @@
             <td>{{ meeting.description }}</td>
             <td>
                 <ol>
-                    <li v-for="participant in participants" :key="participant.id">{{ participant }}</li>
+                    <li v-for="participant in meeting.participants" :key="participant.id">{{ participant }}</li>
                 </ol>
             </td>
             <td>
-                <div v-if="participants.length > 0">
-                    <button @click="deleteParticipant">Wypisz się</button>
+                <div v-if="meeting.participants.length > 0">
+                    <button @click="deleteParticipant(meeting)">Wypisz się</button>
                 </div>
                 <div v-else>
-                    <button @click="addNewParticipant">Zapisz się</button>
+                    <button @click="addNewParticipant(meeting)">Zapisz się</button>
                 </div>
             </td>
         </tr>
@@ -32,13 +32,13 @@
 
 <script>
     export default {
-        props: ['meetings', 'username', 'participants'],
+        props: ['meetings', 'username'],
         methods: {
-            addNewParticipant() {
-                this.$emit('addparticipant', this.username);
+            addNewParticipant(meeting) {
+                this.$emit('addparticipant', this.username, meeting);
             },
-            deleteParticipant(username) {
-                this.$emit('deleteparticipant', this.username);
+            deleteParticipant(meeting) {
+                this.$emit('deleteparticipant', this.username, meeting);
             }
         }
     }

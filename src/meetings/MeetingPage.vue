@@ -2,7 +2,7 @@
     <div>
         <h2>Zajęcia</h2>
         <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
-        <meetings-list :meetings="meetings" :username="username" :participants="participants"
+        <meetings-list :meetings="meetings" :username="username"
                        @addparticipant="addNewParticipant($event)"
                        @deleteparticipant="deleteParticipant($event)"
         ></meetings-list>
@@ -18,19 +18,19 @@
         components: {NewMeetingForm, MeetingsList},
         data() {
             return {
-                meetings: [], participants: []
+                meetings: []
             };
         },
         methods: {
             addNewMeeting(meeting) {
-                meeting.participants = [];
+                meeting.participants = []
                 this.meetings.push(meeting);
             },
-            addNewParticipant(username) {
-                this.participants.push(username)
+            addNewParticipant(username, meeting) {
+                meeting.participants.push(username)
             },
-            deleteParticipant(username) {
-                this.participants.delete(username)
+            deleteParticipant(username, meeting) {
+                meeting.participants.delete(username)
             }
         }
     }
