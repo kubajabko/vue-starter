@@ -18,12 +18,9 @@
                 </ol>
             </td>
             <td>
-                <div v-if="meeting.participants.length > 0">
-                    <button @click="deleteParticipant(meeting)">Wypisz się</button>
-                </div>
-                <div v-else>
-                    <button @click="addNewParticipant(meeting)">Zapisz się</button>
-                </div>
+                    <button @click="deleteParticipant(meeting.name)" v-if="participantAdded(meeting.participants)">Wypisz się</button>
+                    <button @click="addNewParticipant(meeting.name)" v-if="!participantAdded(meeting.participants)">Zapisz się</button>
+                    <button @click="deleteMeeting(meeting.name)" v-if="meeting.participants.length ===0">Usuń puste spotkanie</button>
             </td>
         </tr>
         </tbody>
@@ -34,11 +31,18 @@
     export default {
         props: ['meetings', 'username'],
         methods: {
-            addNewParticipant(meeting) {
-                this.$emit('addparticipant', this.username, meeting);
+            addNewParticipant(meetingName) {
+                this.$emit('addparticipant', meetingName);
             },
-            deleteParticipant(meeting) {
-                this.$emit('deleteparticipant', this.username, meeting);
+            deleteParticipant(meetingName) {
+                this.$emit('deleteparticipant', meetingName);
+            },
+            deleteMeeting(meetingName) {
+                this.$emit('deletemeeting', meetingName)
+            },
+            participantAdded(participants) {
+                if (participants == null || participants.length === 0) return false;
+                return participants.includes(this.username);
             }
         }
     }

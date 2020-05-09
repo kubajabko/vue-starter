@@ -20,6 +20,7 @@
             addNewMeeting() {
                 this.$emit('added', this.newMeeting);
                 this.newMeeting = {};
+                this.newMeeting.participants = [];
             }
         }
     }
