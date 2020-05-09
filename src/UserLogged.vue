@@ -9,11 +9,7 @@
 <script>
     export default {
         props: ['username'],
-        data() {
-            return {
-                email: ''
-            }
-        }, methods: {
+        methods: {
             logout() {
                 this.$emit('logout');
             },

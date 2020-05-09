@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        props:['buttonLabel'],
+        props: ['buttonLabel'],
         data() {
             return {
                 email: ''
