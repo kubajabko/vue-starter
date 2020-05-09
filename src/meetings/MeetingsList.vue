@@ -34,11 +34,11 @@
     export default {
         props: ['meetings', 'username', 'participants'],
         methods: {
-            addNewParticipant(username) {
-                this.participants.push(username);
+            addNewParticipant() {
+                this.$emit('addparticipant', this.username);
             },
             deleteParticipant(username) {
-                this.participants.delete(username)
+                this.$emit('deleteparticipant', this.username);
             }
         }
     }
